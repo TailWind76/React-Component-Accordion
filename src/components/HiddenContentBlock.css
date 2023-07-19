@@ -1,0 +1,13 @@
+/* Скрытый контент */
+.hidden-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+  
+  /* Показанный контент */
+  .visible-content {
+    max-height: 500px; /* Здесь укажите желаемую максимальную высоту контента */
+    overflow: hidden;
+    transition: max-height 0.3s ease-in;
+  }

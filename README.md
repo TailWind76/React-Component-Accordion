@@ -1,10 +1,10 @@
-# Slider Component Usage Documentation
+# HiddenContentBlock Component Usage Documentation
 
-The Slider component provides a customizable slider to display content as slides.
+The HiddenContentBlock component provides a customizable block with hidden content that can be shown or hidden by clicking on a button or an arrow.
 
 ## Installation
 
-To use the Slider component in your project, make sure you have React installed and then run the following command:
+To use the HiddenContentBlock component in your project, make sure you have React installed and then run the following command:
 
 ```bash
 npm install --save react
@@ -13,85 +13,90 @@ npm install --save react
 ## Import the Component
 
 ```jsx
-import Slider from './Slider'; // Specify the path to the Slider.js file
+import HiddenContentBlock from './HiddenContentBlock'; // Specify the path to the HiddenContentBlock.js file
 ```
 
 ## Usage
 
 ```jsx
-<Slider>
-  {/* Your slides go here */}
-</Slider>
+<HiddenContentBlock
+  id="block1"
+  hiddenContent={
+    /* Your hidden content goes here */
+  }
+  buttonStyle={{
+    /* Custom styles for the button */
+  }}
+  contentStyle={{
+    /* Custom styles for the hidden content */
+  }}
+  useArrowButton={false}
+  closedButtonText="Show Content"
+  openButtonText="Hide Content"
+  buttonAlignment="left"
+/>
 ```
 
 ## Props
 
-The Slider component supports the following props to customize its appearance and behavior:
+The HiddenContentBlock component supports the following props to customize its appearance and behavior:
 
-1. `width` (string, optional): Sets the width of the slider. For example, "600px".
+1. `id` (string, required): Sets the `id` attribute of the hidden content container.
 
-2. `height` (string, optional): Sets the height of the slider. For example, "300px".
+2. `hiddenContent` (JSX element, required): The JSX element containing the hidden content that will be shown or hidden.
 
-3. `slideBackgroundColor` (string, optional): Sets the background color of the slides. For example, "lightblue".
+3. `buttonStyle` (object, optional): Custom styles for the button element.
 
-4. `arrowColor` (string, optional): Sets the color of the slide navigation arrows. For example, "darkblue".
+4. `contentStyle` (object, optional): Custom styles for the hidden content container.
 
-5. `arrowSize` (string, optional): Sets the size of the slide navigation arrows. For example, "40px".
+5. `useArrowButton` (boolean, optional): Controls whether to use an arrow (▲/▼) instead of a button for toggling the hidden content.
 
-6. `leftArrowPosition` (string, optional): Sets the position of the left arrow. For example, "20px".
+6. `closedButtonText` (string, optional): Text to display on the button when the content is closed. Default: "Show Content".
 
-7. `rightArrowPosition` (string, optional): Sets the position of the right arrow. For example, "20px".
+7. `openButtonText` (string, optional): Text to display on the button when the content is open. Default: "Hide Content".
 
-8. `arrowsPlacement` (string, optional): Sets the placement of the slide navigation arrows. Possible values: "top", "bottom", "middle". Default: "middle".
+8. `buttonAlignment` (string, optional): Sets the alignment of the button (or arrow) within the block. Possible values: "left", "center", "right". Default: "left".
 
-9. `sliderPosition` (string, optional): Sets the position of the slider inside its container. For example, "center".
-
-10. `sliderPositionType` (string, optional): Sets the type of positioning for the slider. Possible values: "relative", "absolute", "fixed". Default: "relative".
-
-11. `sliderPositionOffset` (object, optional): Allows setting additional offsets for the slider. For example, `{ top: '20px', left: '30px' }`.
-
-12. `sliderPositionOffsetPreset` (string, optional): Predefined offset values for different slider positioning types. Possible values: "top", "bottom", "left", "right". Default: None.
-
-13. `showPagination` (boolean, optional): Controls the visibility of pagination (dots below the slider to switch between slides). Default: false.
-
-14. `slideAnimationDuration` (string, optional): Sets the duration of slide transition animation. For example, "0.5s". Default: "0.3s".
-
-15. `autoScroll` (boolean, optional): Controls automatic scrolling of slides. If set to true, slides will auto-scroll. Default: false.
-
-16. `autoScrollDelay` (number, optional): Delay before automatic slide scrolling in milliseconds. For example, 5000 for a 5-second delay. Default: 3000 (3 seconds).
-
-17.'PaginActive' (string,optional): Color of active dot in pagination menu. Default: 'rgba(0, 0, 0, 0.9)'
-
-18.'PaginBack' (string,optional): Color of background inactive dot in pagination menu. Default: ''rgba(0, 0, 0, 0.5)'
-
-19. 'PaginSize' (string,optional): Size of pagination menu. Default (10)
-
-## Example using all props
+## Example
 
 ```jsx
-<Slider
-  width='500px'
-  height='400px'
-  slideBackgroundColor="violet"
-  arrowSize='40px'
-  arrowBackgroundColor='aqua'
-  arrowColor='#000'
-  arrowBackColor="cyan"
-  leftArrowPosition="20px"
-  rightArrowPosition="20px"
-  arrowsPlacement="middle"
-  sliderPositionType="absolute"
-  sliderPositionOffsetPreset="right"
-  showPagination={true}
-  slideAnimationDuration='0.2s'
-  autoScroll={true}
-  autoScrollDelay={5000}
-  PaginActive="#fff"
-  PaginBack="#000"
-  PaginSize={20}
->
-  {/* Your slides go here */}
-</Slider>
+import React from 'react';
+import HiddenContentBlock from './HiddenContentBlock';
+
+const App = () => {
+  const customButtonStyle = {
+    backgroundColor: '#ff4500',
+    borderRadius: '8px',
+  };
+
+  const customContentStyle = {
+    backgroundColor: '#f0f0f0',
+    padding: '10px',
+  };
+
+  return (
+    <div>
+      <h1>Example HiddenContentBlock Usage</h1>
+      <HiddenContentBlock
+        id="block1"
+        hiddenContent={
+          <div>
+            <p>Hidden content for block 1</p>
+            <img src="example.jpg" alt="Example" />
+          </div>
+        }
+        buttonStyle={customButtonStyle}
+        contentStyle={customContentStyle}
+        useArrowButton={false}
+        closedButtonText="Show More"
+        openButtonText="Show Less"
+        buttonAlignment="center"
+      />
+    </div>
+  );
+};
+
+export default App;
 ```
 
-You can use the Slider component's props to customize its appearance and behavior according to your needs.
+You can use the HiddenContentBlock component's props to customize the appearance and behavior of the block and hidden content according to your needs.
