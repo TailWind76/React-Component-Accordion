@@ -27,8 +27,8 @@ const HiddenContentBlock = ({ id, hiddenContent, buttonStyle, contentStyle, useA
     ...buttonStyle,
   };
 
-  const defaultClosedButtonText = 'Показать контент';
-  const defaultOpenButtonText = 'Скрыть контент';
+  const defaultClosedButtonText = 'Show content';
+  const defaultOpenButtonText = 'Hide content';
 
   const closedButtonLabel = closedButtonText || defaultClosedButtonText;
   const openButtonLabel = openButtonText || defaultOpenButtonText;
